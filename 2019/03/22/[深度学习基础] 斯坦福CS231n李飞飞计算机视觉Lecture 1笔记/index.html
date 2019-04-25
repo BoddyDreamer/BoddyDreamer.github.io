@@ -107,13 +107,13 @@
 
 
 
-  <meta name="description" content="前言：目前做深度学习也有一段时间了，系统的知识也学了很多，但是大多数都是自己在网上所获得的零散的知识，最近看了李飞飞的斯坦福网上公开课，觉得可以好好的巩固一下基础，对每个Lecture做一下笔记，DeepLearning，DeepLove！  Lecture 1: Introduction众所周知，计算机视觉是一个多学科融合的领域，从计算机科学到数学，从生物学到心理学，计算机视觉都有很大的用武之">
+  <meta name="description" content="前言：目前做深度学习也有一段时间了，系统的知识也学了很多，但是大多数都是自己在网上所获得的零散的知识，最近看了李飞飞的斯坦福网上公开课，觉得可以好好的巩固一下基础，对每个Lecture做一下笔记，DeepLearning，DeepLove！">
 <meta name="keywords" content="python,笔记,计算机视觉,DeepLearning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS231n计算机视觉Lecture 1笔记">
 <meta property="og:url" content="http://BoddyDreamer.github.io/2019/03/22/[深度学习基础] 斯坦福CS231n李飞飞计算机视觉Lecture 1笔记/index.html">
 <meta property="og:site_name" content="Boddy">
-<meta property="og:description" content="前言：目前做深度学习也有一段时间了，系统的知识也学了很多，但是大多数都是自己在网上所获得的零散的知识，最近看了李飞飞的斯坦福网上公开课，觉得可以好好的巩固一下基础，对每个Lecture做一下笔记，DeepLearning，DeepLove！  Lecture 1: Introduction众所周知，计算机视觉是一个多学科融合的领域，从计算机科学到数学，从生物学到心理学，计算机视觉都有很大的用武之">
+<meta property="og:description" content="前言：目前做深度学习也有一段时间了，系统的知识也学了很多，但是大多数都是自己在网上所获得的零散的知识，最近看了李飞飞的斯坦福网上公开课，觉得可以好好的巩固一下基础，对每个Lecture做一下笔记，DeepLearning，DeepLove！">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190322201508685.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190322210426244.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70">
@@ -132,10 +132,10 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190322212229569.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190322212351636.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190322212404704.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70">
-<meta property="og:updated_time" content="2019-04-25T12:15:12.596Z">
+<meta property="og:updated_time" content="2019-04-25T13:51:39.094Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CS231n计算机视觉Lecture 1笔记">
-<meta name="twitter:description" content="前言：目前做深度学习也有一段时间了，系统的知识也学了很多，但是大多数都是自己在网上所获得的零散的知识，最近看了李飞飞的斯坦福网上公开课，觉得可以好好的巩固一下基础，对每个Lecture做一下笔记，DeepLearning，DeepLove！  Lecture 1: Introduction众所周知，计算机视觉是一个多学科融合的领域，从计算机科学到数学，从生物学到心理学，计算机视觉都有很大的用武之">
+<meta name="twitter:description" content="前言：目前做深度学习也有一段时间了，系统的知识也学了很多，但是大多数都是自己在网上所获得的零散的知识，最近看了李飞飞的斯坦福网上公开课，觉得可以好好的巩固一下基础，对每个Lecture做一下笔记，DeepLearning，DeepLove！">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190322201508685.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70">
 
 
@@ -478,7 +478,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-25 20:15:12" itemprop="dateModified" datetime="2019-04-25T20:15:12+08:00">2019-04-25</time>
+                <time title="修改时间：2019-04-25 21:51:39" itemprop="dateModified" datetime="2019-04-25T21:51:39+08:00">2019-04-25</time>
               
             
           </span>
@@ -551,7 +551,7 @@
 
       
         <blockquote>
-<p>前言：目前做深度学习也有一段时间了，系统的知识也学了很多，但是大多数都是自己在网上所获得的零散的知识，最近看了李飞飞的斯坦福网上公开课，觉得可以好好的巩固一下基础，对每个Lecture做一下笔记，DeepLearning，DeepLove！</p>
+<p>前言：目前做深度学习也有一段时间了，系统的知识也学了很多，但是大多数都是自己在网上所获得的零散的知识，最近看了李飞飞的斯坦福网上公开课，觉得可以好好的巩固一下基础，对每个Lecture做一下笔记，DeepLearning，DeepLove！<br><a id="more"></a></p>
 </blockquote>
 <h1 id="Lecture-1-Introduction"><a href="#Lecture-1-Introduction" class="headerlink" title="Lecture 1: Introduction"></a>Lecture 1: Introduction</h1><p>众所周知，计算机视觉是一个多学科融合的领域，从计算机科学到数学，从生物学到心理学，计算机视觉都有很大的用武之地：<br><img src="https://img-blog.csdnimg.cn/20190322201508685.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt></p>
 <h2 id="视觉的由来与机器视觉的演变"><a href="#视觉的由来与机器视觉的演变" class="headerlink" title="视觉的由来与机器视觉的演变"></a>视觉的由来与机器视觉的演变</h2><p>地球诞生生命之初，谁都不知道地球是什么样子的——因为没有生物有眼睛，慢慢的，为了更好的捕食，5亿年前第一批生物进化出了最基础的视觉，又经过漫长的时间，等到人类已经可以制造出机器，最初的机器视觉物体产生了：照相机！<img src="https://img-blog.csdnimg.cn/20190322210426244.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt=" "><br><img src="https://img-blog.csdnimg.cn/20190322210350294.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt><br>而后，在20世纪，计算机视觉（机器视觉）的发展空前迅速，时间来到20世纪中叶这个重要的节点，两名哈弗的学生为了了解视觉神经的处理机制，做了一个实验：将金属探针接入猫的基础视觉皮质层中（primary visual cortex，处理大量和视觉相关的工作，但是位置在后脑勺处，并且大脑中有接近50%的神经元都参与着视觉处理的过程），并记录神经元的状态，发现猫在注视照片时并不会引起神经元的活动，但是当他们在切换照片的过程中，会激活部分神经元，这是开启深度学习的一个重大发现，他们得到的结论是：<strong>视觉处理流程的第一步，是对简单的形状结构处理，如边缘，排列等</strong>，并且凭借这一发现获得了1981年的诺贝尔医学奖。<br><img src="https://img-blog.csdnimg.cn/20190322211201446.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt><br>计算机视觉在这一发现之后有了突飞猛进的发展:<br>而现代计算机视觉领域的先驱是谁呢？是Lary Roberts在1963年的论文《Block world》，他的论文中提到边缘是决定物体形状的关键，并且解析出物体边缘的信息，属于行业内的开创性文章；<br><img src="https://img-blog.csdnimg.cn/20190322211430290.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt><br>而后1966年，麻省理工成立人工智能研究室（MIT AI lab），使得计算机视觉成为人工智能中最为发展快速的领域；<br><img src="https://img-blog.csdnimg.cn/20190322211540294.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt><br>接下来是David Marr，他在1970年的Vision一书中提出了另一个可以称之为深度学习基石的理论：视觉是分层的，并且我们可以建立一个分层的模型，将图像分为边缘结构-&gt;2.5D结构（因为物体之间是存在遮挡的，但是人类的大脑是可以分辨出来的，而且世界是三维的，但是我们的视觉成像是二维的）-&gt;3D结构，这是一个最基础但是也很抽象的视觉认知模型；<br><img src="https://img-blog.csdnimg.cn/20190322211628176.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt><br>而后MIT与斯坦福分别对视觉模型进行研究，并且建立了简单的模型，MIT模型认为一切物体都是由简单的形状组成，例如圆柱体，只是观察角度不同；而斯坦福则认为物体是由简单形状构成，但是形状之间是由弹簧连接起来的（哈哈哈）；<br><img src="https://img-blog.csdnimg.cn/20190322211700277.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt><br>接下来进入90年代，计算机视觉进入彩色世界，Normalized Cut被提出用来进行图像分割，人类视觉对于图形的分类是很奇特的，而计算机却没有办法做到完美的分组，这也使得感知分组变成视觉领域最为重要的问题，即使到现在也没有得到很好的答案；<br><img src="https://img-blog.csdnimg.cn/20190322211728197.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt><br>接下来计算机视觉跳入了一个新的领域：物体识别领域，1999年的物体识别与2001年的人脸检测是这一领域的两大标志性产物，这一领域也变成目前人工智能主攻的课题；<br><img src="https://img-blog.csdnimg.cn/20190322211808831.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt><br><img src="https://img-blog.csdnimg.cn/20190322211823138.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt></p>
@@ -820,7 +820,6 @@
             
           
           
-
         </div>
       </div>
 
@@ -858,7 +857,7 @@
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart" aria-hidden="true"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Boddy</span>
 
@@ -867,6 +866,10 @@
   
 </div>
 
+
+<!-- -->
+
+<!--
 
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
 
@@ -880,6 +883,29 @@
 
 
 
+-->
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共1.5k字</span>
+</div>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
 
         
 <div class="busuanzi-count">
@@ -1414,11 +1440,12 @@
     });
   </script>
 
-  
-     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
-     <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
-     <script type="text/javascript" src="/js/fireworks.js"></script>
-  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/love.js"></script>
+  <!-- 背景动画 -->
+  <script type="text/javascript" src="/js/particle.js"></script>
+
+
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
 </html>
