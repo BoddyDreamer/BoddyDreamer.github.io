@@ -107,16 +107,36 @@
 
 
 
-  <meta name="description" content="DeepLearning,DeepDream,DeepLove">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Boddy">
-<meta property="og:url" content="http://BoddyDreamer.github.io/archives/2019/04/index.html">
+  <meta name="description" content="前言：目前做深度学习也有一段时间了，系统的知识也学了很多，但是大多数都是自己在网上所获得的零散的知识，最近看了李飞飞的斯坦福网上公开课，觉得可以好好的巩固一下基础，对每个Lecture做一下笔记，DeepLearning，DeepLove！  Lecture 1: Introduction众所周知，计算机视觉是一个多学科融合的领域，从计算机科学到数学，从生物学到心理学，计算机视觉都有很大的用武之">
+<meta name="keywords" content="python,笔记,计算机视觉,DeepLearning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS231n计算机视觉Lecture 1笔记">
+<meta property="og:url" content="http://BoddyDreamer.github.io/2019/03/22/[深度学习基础] 斯坦福CS231n李飞飞计算机视觉Lecture 1笔记/index.html">
 <meta property="og:site_name" content="Boddy">
-<meta property="og:description" content="DeepLearning,DeepDream,DeepLove">
+<meta property="og:description" content="前言：目前做深度学习也有一段时间了，系统的知识也学了很多，但是大多数都是自己在网上所获得的零散的知识，最近看了李飞飞的斯坦福网上公开课，觉得可以好好的巩固一下基础，对每个Lecture做一下笔记，DeepLearning，DeepLove！  Lecture 1: Introduction众所周知，计算机视觉是一个多学科融合的领域，从计算机科学到数学，从生物学到心理学，计算机视觉都有很大的用武之">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190322201508685.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190322210426244.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190322210350294.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190322211201446.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190322211430290.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190322211540294.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190322211628176.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190322211700277.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190322211728197.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190322211808831.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190322211823138.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190322211950323.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190322212026168.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190322212108390.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190322212229569.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190322212351636.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190322212404704.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-04-25T12:15:12.596Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Boddy">
-<meta name="twitter:description" content="DeepLearning,DeepDream,DeepLove">
+<meta name="twitter:title" content="CS231n计算机视觉Lecture 1笔记">
+<meta name="twitter:description" content="前言：目前做深度学习也有一段时间了，系统的知识也学了很多，但是大多数都是自己在网上所获得的零散的知识，最近看了李飞飞的斯坦福网上公开课，觉得可以好好的巩固一下基础，对每个Lecture做一下笔记，DeepLearning，DeepLove！  Lecture 1: Introduction众所周知，计算机视觉是一个多学科融合的领域，从计算机科学到数学，从生物学到心理学，计算机视觉都有很大的用武之">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190322201508685.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70">
 
 
 
@@ -126,7 +146,7 @@
 
   
   
-  <link rel="canonical" href="http://BoddyDreamer.github.io/archives/2019/04/">
+  <link rel="canonical" href="http://BoddyDreamer.github.io/2019/03/22/[深度学习基础] 斯坦福CS231n李飞飞计算机视觉Lecture 1笔记/">
 
 
 
@@ -136,7 +156,7 @@
   };
 </script>
 
-  <title>归档 | Boddy</title>
+  <title>CS231n计算机视觉Lecture 1笔记 | Boddy</title>
   
 
 
@@ -184,7 +204,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -256,7 +276,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -337,31 +357,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -407,78 +402,234 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 1 篇日志。 继续努力。
-      </span>
-      
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://BoddyDreamer.github.io/2019/03/22/[深度学习基础] 斯坦福CS231n李飞飞计算机视觉Lecture 1笔记/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Boddy">
+      <meta itemprop="description" content="DeepLearning,DeepDream,DeepLove">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Boddy">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/04/07/hello-world/" itemprop="url">
-            
-              <span itemprop="name">Hello World</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">CS231n计算机视觉Lecture 1笔记
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-07T20:51:54+08:00" content="2019-04-07">
-          04-07
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-22 21:33:46" itemprop="dateCreated datePublished" datetime="2019-03-22T21:33:46+08:00">2019-03-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-25 20:15:12" itemprop="dateModified" datetime="2019-04-25T20:15:12+08:00">2019-04-25</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/深度学习笔记/" itemprop="url" rel="index"><span itemprop="name">深度学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/03/22/[深度学习基础] 斯坦福CS231n李飞飞计算机视觉Lecture 1笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/22/[深度学习基础] 斯坦福CS231n李飞飞计算机视觉Lecture 1笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>前言：目前做深度学习也有一段时间了，系统的知识也学了很多，但是大多数都是自己在网上所获得的零散的知识，最近看了李飞飞的斯坦福网上公开课，觉得可以好好的巩固一下基础，对每个Lecture做一下笔记，DeepLearning，DeepLove！</p>
+</blockquote>
+<h1 id="Lecture-1-Introduction"><a href="#Lecture-1-Introduction" class="headerlink" title="Lecture 1: Introduction"></a>Lecture 1: Introduction</h1><p>众所周知，计算机视觉是一个多学科融合的领域，从计算机科学到数学，从生物学到心理学，计算机视觉都有很大的用武之地：<br><img src="https://img-blog.csdnimg.cn/20190322201508685.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt></p>
+<h2 id="视觉的由来与机器视觉的演变"><a href="#视觉的由来与机器视觉的演变" class="headerlink" title="视觉的由来与机器视觉的演变"></a>视觉的由来与机器视觉的演变</h2><p>地球诞生生命之初，谁都不知道地球是什么样子的——因为没有生物有眼睛，慢慢的，为了更好的捕食，5亿年前第一批生物进化出了最基础的视觉，又经过漫长的时间，等到人类已经可以制造出机器，最初的机器视觉物体产生了：照相机！<img src="https://img-blog.csdnimg.cn/20190322210426244.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt=" "><br><img src="https://img-blog.csdnimg.cn/20190322210350294.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt><br>而后，在20世纪，计算机视觉（机器视觉）的发展空前迅速，时间来到20世纪中叶这个重要的节点，两名哈弗的学生为了了解视觉神经的处理机制，做了一个实验：将金属探针接入猫的基础视觉皮质层中（primary visual cortex，处理大量和视觉相关的工作，但是位置在后脑勺处，并且大脑中有接近50%的神经元都参与着视觉处理的过程），并记录神经元的状态，发现猫在注视照片时并不会引起神经元的活动，但是当他们在切换照片的过程中，会激活部分神经元，这是开启深度学习的一个重大发现，他们得到的结论是：<strong>视觉处理流程的第一步，是对简单的形状结构处理，如边缘，排列等</strong>，并且凭借这一发现获得了1981年的诺贝尔医学奖。<br><img src="https://img-blog.csdnimg.cn/20190322211201446.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt><br>计算机视觉在这一发现之后有了突飞猛进的发展:<br>而现代计算机视觉领域的先驱是谁呢？是Lary Roberts在1963年的论文《Block world》，他的论文中提到边缘是决定物体形状的关键，并且解析出物体边缘的信息，属于行业内的开创性文章；<br><img src="https://img-blog.csdnimg.cn/20190322211430290.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt><br>而后1966年，麻省理工成立人工智能研究室（MIT AI lab），使得计算机视觉成为人工智能中最为发展快速的领域；<br><img src="https://img-blog.csdnimg.cn/20190322211540294.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt><br>接下来是David Marr，他在1970年的Vision一书中提出了另一个可以称之为深度学习基石的理论：视觉是分层的，并且我们可以建立一个分层的模型，将图像分为边缘结构-&gt;2.5D结构（因为物体之间是存在遮挡的，但是人类的大脑是可以分辨出来的，而且世界是三维的，但是我们的视觉成像是二维的）-&gt;3D结构，这是一个最基础但是也很抽象的视觉认知模型；<br><img src="https://img-blog.csdnimg.cn/20190322211628176.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt><br>而后MIT与斯坦福分别对视觉模型进行研究，并且建立了简单的模型，MIT模型认为一切物体都是由简单的形状组成，例如圆柱体，只是观察角度不同；而斯坦福则认为物体是由简单形状构成，但是形状之间是由弹簧连接起来的（哈哈哈）；<br><img src="https://img-blog.csdnimg.cn/20190322211700277.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt><br>接下来进入90年代，计算机视觉进入彩色世界，Normalized Cut被提出用来进行图像分割，人类视觉对于图形的分类是很奇特的，而计算机却没有办法做到完美的分组，这也使得感知分组变成视觉领域最为重要的问题，即使到现在也没有得到很好的答案；<br><img src="https://img-blog.csdnimg.cn/20190322211728197.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt><br>接下来计算机视觉跳入了一个新的领域：物体识别领域，1999年的物体识别与2001年的人脸检测是这一领域的两大标志性产物，这一领域也变成目前人工智能主攻的课题；<br><img src="https://img-blog.csdnimg.cn/20190322211808831.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt><br><img src="https://img-blog.csdnimg.cn/20190322211823138.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt></p>
+<h2 id="计算机视觉的崛起"><a href="#计算机视觉的崛起" class="headerlink" title="计算机视觉的崛起"></a>计算机视觉的崛起</h2><p>接下来进入20世纪，很多的挑战比赛加速了深度学习的进程，2006-2012年的PASCAL Vsiual Object Challenge 是一个将图片进行20分类任务的挑战，比赛持续的几年分类错误率在持续下降；<br><img src="https://img-blog.csdnimg.cn/20190322211950323.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt><br>到了2009年，IMAGENET挑战横空出世，包含1000种类别的140万张标注图像提供给参赛者进行认知分类，而IMAGENET比赛进行的第三年，也就是2012年，卷积神经网络一举夺魁拿下当年比赛的桂冠，这也就是深度学习理论的开端，并且以后每一年的IMAGENET冠军都是卷积神经网络显示出最好的成绩；<br><img src="https://img-blog.csdnimg.cn/20190322212026168.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt><br><img src="https://img-blog.csdnimg.cn/20190322212108390.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt><br>其实早在1998年，LeCun就使用了卷积神经网络来进行了手写字的识别，而2012年冠军的AlexNet几乎是照搬的LeCun的网络，除了激活函数由Sigmoid变成了ReLU，而能够让卷积神经网络能有如此之进化的效果很大一部分程度上要归功于硬件的革新；<br><img src="https://img-blog.csdnimg.cn/20190322212229569.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt></p>
+<h2 id="计算机视觉接下来的挑战"><a href="#计算机视觉接下来的挑战" class="headerlink" title="计算机视觉接下来的挑战"></a>计算机视觉接下来的挑战</h2><p>计算机视觉所要专注的问题其实远远不止物体识别，对图片进行密集标记，动作识别，识别与3D整合，这些都是深度学习面临的挑战；计算机视觉针对图像，若是可以让计算机进行“看图说话”，或者让计算机理解图片中的深层语义，这些都是计算机视觉可以达到且应该达到的目标；<br><img src="https://img-blog.csdnimg.cn/20190322212351636.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt><br><img src="https://img-blog.csdnimg.cn/20190322212404704.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3F3ZXF3cnF3,size_16,color_FFFFFF,t_70" alt><br>深度学习有着很好的发展前景，即使目前正是深度学习的“瓶颈期”，可它在图像领域仍然走在各种方法的前列，学好深度学习，走向美好人生，我们的梦想是星辰与大海！</p>
+<p>资料来源：</p>
+<ol>
+<li><a href="https://study.163.com/course/courseMain.htm?courseId=1003223001" target="_blank" rel="noopener">斯坦福CS231n李飞飞计算机视觉视频课程</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/21930884" target="_blank" rel="noopener">CS231n官方笔记授权翻译总集篇</a></li>
+<li><a href="http://vision.stanford.edu/teaching/cs231n/syllabus.html" target="_blank" rel="noopener">CS231n官方PPT</a></li>
+</ol>
+
+      
+    </div>
+
+    
+      
 
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+          
+            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          
+            <a href="/tags/计算机视觉/" rel="tag"><i class="fa fa-tag"></i> 计算机视觉</a>
+          
+            <a href="/tags/DeepLearning/" rel="tag"><i class="fa fa-tag"></i> DeepLearning</a>
+          
+        </div>
+      
+
+      
+      
+      
 
       
 
-    </div>
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -498,8 +649,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -523,7 +683,47 @@
               
 
               
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
 
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
               
             </nav>
           
@@ -624,6 +824,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-1-Introduction"><span class="nav-number">1.</span> <span class="nav-text">Lecture 1: Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#视觉的由来与机器视觉的演变"><span class="nav-number">1.1.</span> <span class="nav-text">视觉的由来与机器视觉的演变</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机视觉的崛起"><span class="nav-number">1.2.</span> <span class="nav-text">计算机视觉的崛起</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机视觉接下来的挑战"><span class="nav-number">1.3.</span> <span class="nav-text">计算机视觉接下来的挑战</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -773,6 +990,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -818,6 +1039,8 @@
 
 
 
+
+  
 
 
   
@@ -1192,9 +1415,9 @@
   </script>
 
   
-   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
-   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
-   <script type="text/javascript" src="/js/fireworks.js"></script>
+     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+     <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+     <script type="text/javascript" src="/js/fireworks.js"></script>
   
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
